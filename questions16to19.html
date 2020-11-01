@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 9| jQuery Events</title>
+    <link href="styles/normalize.css" type="text/css" rel="stylesheet">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        //Question 16
+        $(document).ready(function() {
+            $("#button1").click(function(event) {
+                window.alert("Button1 is clicked.")
+            });
+        });
+        //Question 17
+         $(document).ready(function() {
+            $("#button2").bind("click", function(event) {
+                window.alert("Button2 is clicked.")
+            });
+        });
+         //Question 18
+          $(document).ready(function() {
+            $("#button3").on("click", function(){
+                window.alert("Button3 is clicked.")
+            });
+        });
+          //Question 19
+         $(document).ready(function() {
+            $("#Question19").on({
+                click: function(event) {
+                    window.alert(event.target.nodeName + " is clicked.")
+                }
+            }, "button");
+        });
+        
+    </script>
+</head>
+<body>
+    <br>
+    <button id="button1">Button 1</button>
+    <button id="button2">Button 2</button>
+    <button id="button3">Button 3</button>
+    <br>
+    <br>
+    <div id="Question19">
+        <button id="button4">Button 4</button>
+        <button id="button5">Button 5</button>
+    </div>
+    <br>
+    <div id= "myDiv1" style="background-color: gray"></div>
+</body>
+</html>

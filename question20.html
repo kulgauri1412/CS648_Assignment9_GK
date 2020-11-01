@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 9| jQuery Events</title>
+    <link href="styles/normalize.css" type="text/css" rel="stylesheet">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#myDiv").width("400px").height("400px");
+
+
+            $("body").on({
+                click: function(event) {
+                    window.alert(event.target.nodeName + " was clicked")
+                },
+
+                mouseenter: function(event) {
+                    window.alert("The mouse entered " + event.target.nodeName)
+                },
+
+                mouseleave: function(event) {
+                    window.alert("The mouse left " + event.target.nodeName)
+                }
+                
+            }, "div");
+        });
+    </script>
+</head>
+<body>
+    
+    <div id= "myDiv" style="background-color: gray"></div>
+    
+</body>
+</html>

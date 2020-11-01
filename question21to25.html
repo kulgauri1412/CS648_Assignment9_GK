@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 9| jQuery Events</title>
+    <link href="styles/normalize.css" type="text/css" rel="stylesheet">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        //Question 21
+        $(document).ready(function() {
+
+            $("#myDiv1").width("400px").height("400px");
+
+
+            $("body").on({
+                click: function(event) {
+                    $("span").html(event.target.nodeName + " was clicked");
+                },
+
+                mouseenter: function(event) {
+                    $("span").html("The mouse entered " + event.target.nodeName);
+
+                },
+
+                mouseleave: function(event) {
+                    $("span").html("The mouse left " + event.target.nodeName);
+                }
+                
+            }, "div");
+
+        });
+        //Question 22
+         $(document).ready(function() {
+            $("a").attr("href", "modulemedia.com");
+
+            $("body").on("click", "a", function(event) {
+                var element = $(this);
+                event.preventDefault();
+                $("a:visited").css("color", "red");
+                alert("https://www.modulemedia.com");
+            });
+        });
+         //Question 23
+
+          $(document).ready(function() {
+            $(window).resize(function () {
+            $("#myDiv2").text(`Width: ${$(window).width()} Height: ${$(window).height()}`)
+                }); 
+
+              $("#b1").click(function(){
+                 alert(`Width: ${$(window).width()} Height: ${$(window).height()}`);
+            });
+            });
+          //Question 19
+         $(document).ready(function() {
+            $("#Question19").on({
+                click: function(event) {
+                    window.alert(event.target.nodeName + " is clicked.")
+                }
+            }, "button");
+        });
+         //Question 24
+        $(document).ready(function() {
+
+            $("input").focus(function() {
+                $("input").css("background-color", "#DFE3E6");
+            }); 
+
+            $("input").blur(function() {
+                $("input").css("background-color", "white");
+            }); 
+            
+        });
+        //Question 25
+        $(document).ready(function() {
+
+            $("#submitBtn").on("click", function() {
+
+                var name = $("#name");
+                var email = $("#email");
+
+                var error = false;
+
+                if (name.val().length < 1) {
+                    alert("Name is a required field.");
+                    name.css("border", "2px solid red");
+                    error = true;
+                } else {
+                    name.css("border", "2px solid green");
+                }
+
+                if (email.val().length < 1) {
+                    alert("Email is a required field.");
+                    email.css("border", "2px solid red");
+                    error = true;
+                } else {
+                    email.css("border", "2px solid green");
+                }
+
+                if (!error) {                    
+                    $("#formData").html("Name: " + name.val() + "<br>Email: " + email.val());
+                    name.css("border", "2px solid green");
+                    email.css("border", "2px solid green");
+                }
+            });
+
+        });
+        
+    </script>
+</head>
+<body>
+    <div id= "myDiv1" style="background-color: gray"></div>
+    <span>Span tag for events</span>
+    <br>
+    <br>
+    <a rel="">Navigate to ModuleMedia.com</a>
+    <br>
+    <br>
+    <div id="myDiv2"></div>
+    <button id="b1">Display the width and hight of div</button>
+    <br><br>
+    <input type="text">
+    <br>
+    <br>
+    <form>
+        <input id="name" type="text" placeholder="Enter your name"><br><br>
+        <input id="email" type="text" placeholder="Enter your email"><br><br>
+        <button id="submitBtn" type="button">Submit</button>
+    </form>
+    <br><br>
+    <div id="formData"></div>
+</body>
+</html>
